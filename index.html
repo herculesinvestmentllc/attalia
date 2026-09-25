@@ -6,39 +6,43 @@
   <meta name="description" content="ATTALIA — Global Commerce & Brand Development Group.">
   <title>ATTALIA — Global Commerce & Brand Development Group</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="LOGO/logoamblem.png">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://herculesinvestmentllc.github.io/attalia/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ATTALIA — Global Commerce & Brand Development Group">
+  <meta property="og:description" content="One DNA. Many businesses. Build · Operate · Scale.">
+  <meta property="og:image" content="https://herculesinvestmentllc.github.io/attalia/VIDEO/attalia_poster.jpg">
+  <meta property="og:url" content="https://herculesinvestmentllc.github.io/attalia/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/webp" href="LOGO/logoamblem.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- PRELOADER -->
   <div class="preloader" id="preloader" aria-hidden="true">
-    <img class="preloader__emblem" src="LOGO/logoamblem.png" alt="ATTALIA Emblem" width="140" height="140">
+    <img class="preloader__emblem" src="LOGO/logoamblem.webp" alt="ATTALIA Emblem" width="140" height="140">
     <span class="preloader__text">Entering the System</span>
   </div>
 
-  <!-- FIXED HEADER -->
   <header class="header" id="header">
     <img class="header__logo" id="headerLogo" src="LOGO/gemini-svg.svg" alt="ATTALIA" height="40">
   </header>
 
-  <!-- SABİT VİDEO -->
   <video
     class="fullscreen-video"
     id="scrubVideo"
-    src="VIDEO/attalia_dna.mp4"
+    poster="VIDEO/attalia_poster.jpg"
+    data-src-desktop="VIDEO/attalia_dna.mp4"
+    data-src-mobile="VIDEO/attalia_dna_720.mp4"
     muted
     playsinline
-    preload="auto"
-    x-webkit-airplay="allow"
+    preload="metadata"
     aria-hidden="true"
   ></video>
-  <!-- VİDEO BİTİNCE KAPANACAK EKRAN MASKESİ (BUNU BURAYA EKLE) -->
   <div class="screen-mask" id="screenMask"></div>
 
-  <!-- HERO BÖLÜMÜ -->
   <section class="hero" id="hero" aria-label="Hero – The Core DNA">
     <div class="hero__content">
       <div class="hero-block hero-block--sublabel">
@@ -61,16 +65,13 @@
     </div>
   </section>
 
-  <!-- SCROLL-SCRUB ALANI -->
   <div class="scroll-spacer" id="scrollScrubZone">
     <div class="scroll-sticky-content">
       <div class="scroll-spacer__overlay" id="divisionOverlay">
-        <!-- Dinamik yazılar buraya gelecek -->
       </div>
     </div>
   </div>
 
-  <!-- SCROLL 2: CELL DIVISION -->
   <section class="division" id="division" aria-label="Cell Division – Replication">
     <div class="division__content">
       <h2 class="division__headline">Replicating Success.<br>Scaling Assets.</h2>
@@ -81,7 +82,6 @@
     </div>
   </section>
 
-  <!-- SCROLL 3: PILLARS -->
   <section class="pillars" id="pillars" aria-label="Operational Infrastructure">
     <div class="pillars__header">
       <p class="pillars__eyebrow">The Operating System</p>
@@ -97,7 +97,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer" id="footer">
     <p class="footer__copyright">&copy; 2026 ATTALIA Group. All rights reserved.</p>
   </footer>

@@ -7,43 +7,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerLogo = document.getElementById('headerLogo');
   const header = document.getElementById('header');
 
-  // Preloader Kaldırma
-  setTimeout(() => {
+  const screenMask = document.getElementById('screenMask');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let revealed = false;
+  const reveal = () => {
+    if (revealed) return;
+    revealed = true;
     if (preloader) {
       preloader.style.opacity = '0';
       setTimeout(() => preloader.remove(), 600);
     }
     if (heroSection) heroSection.classList.add('is-revealed');
     if (headerLogo) headerLogo.classList.add('is-visible');
-  }, 800);
+  };
+  setTimeout(reveal, 2500);
 
-  // VİDEOYU İLK HAREKETE HAZIRLAMA (DECODE)
-  if (video) {
+  if (video && !reducedMotion) {
+    const isMobile = window.matchMedia('(max-width: 900px)').matches;
+    video.src = isMobile ? video.dataset.srcMobile : video.dataset.srcDesktop;
     video.muted = true;
     video.playsInline = true;
-    video.preload = "auto";
-    video.load();
 
-    const forceDecode = () => {
-      video.currentTime = 0.01;
-      video.play().then(() => {
-        video.pause();
-        video.currentTime = 0;
-        video.classList.add('is-loaded');
-      }).catch(() => {
+    video.addEventListener('loadeddata', () => {
+      video.play().then(() => video.pause()).catch(() => {}).finally(() => {
         video.currentTime = 0;
         video.classList.add('is-loaded');
       });
-    };
-
-    if (video.readyState >= 2) {
-      forceDecode();
-    } else {
-      video.addEventListener('loadeddata', forceDecode, { once: true });
-    }
+      reveal();
+    }, { once: true });
+    video.addEventListener('error', reveal, { once: true });
+    video.load();
+  } else {
+    if (video) video.classList.add('is-loaded');
+    reveal();
   }
 
-  // Akıcı Scroll Scrubbing (En tepeden başlar)
   let ticking = false;
 
   window.addEventListener('scroll', () => {
@@ -65,32 +64,23 @@ document.addEventListener('DOMContentLoaded', () => {
     let progress = scrollTop / totalScrollHeight;
     progress = Math.max(0, Math.min(1, progress));
 
-    // VİDEOYU İLK HAREKETLE ANINDA OYNAT
-    if (video.duration && !isNaN(video.duration)) {
+    if (!reducedMotion && video.duration && !isNaN(video.duration)) {
       video.currentTime = progress * video.duration;
     }
 
-    // --- VİDEO BİTİNCE ARKADA SABİT KALSIN VE MASKESİ ÇALIŞSIN ---
-    const screenMask = document.getElementById('screenMask');
     if (screenMask) {
       if (progress >= 0.94) { 
         screenMask.classList.add('is-active');
-        // DİKKAT: Artık videoyu gizlemiyoruz (opacity = '0' yapmıyoruz), 
-        // böylece video son karesinde arkada sabit kalıyor.
       } else {
         screenMask.classList.remove('is-active');
       }
     }
-    // -------------------------------------------------------------
 
-    // YAZI EVRELERİ
     let newState = -1;
     if (progress > 0.01 && progress < 0.45) {
-      newState = 0; // AN IDEA APPEARS...
-    } else if (progress >= 0.45 && progress <= 0.95) {
+      newState = 0;    } else if (progress >= 0.45 && progress <= 0.95) {
       const stepProgress = (progress - 0.45) / 0.50;
-      newState = Math.min(4, Math.floor(stepProgress * 4) + 1); // BUILD · LAUNCH · SCALE · REPEAT
-    }
+      newState = Math.min(4, Math.floor(stepProgress * 4) + 1);    }
 
     updateDivisionOverlay(newState);
 

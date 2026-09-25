@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Montega';
-  src: url('fonts/Montega.woff2') format('woff2'); /* Kendi dosya yolunu buraya yazabilirsin */
+  src: url('fonts/Montega.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -13,7 +13,7 @@
   --text-secondary: #E2E8F0;
   --text-tertiary: #A0AEC0;
   
-  /* HER ŞEYİ MONTAGA YAPMAK İÇİN İKİSİNİ DE AYNI YAPIYORUZ */
+
   --font-serif: 'Montega', serif;
   --font-sans: 'Montega', serif; 
   
@@ -24,23 +24,24 @@
 html { scroll-behavior: smooth; font-size: 16px; }
 body { font-family: var(--font-sans); background-color: var(--bg-primary); color: var(--text-secondary); overflow-x: hidden; }
 
-/* Preloader */
+
 .preloader { position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center; flex-direction: column; background-color: var(--bg-primary); transition: opacity 0.6s var(--ease-out-expo); }
 .preloader__emblem { width: 400px; height: auto; }
 .preloader__text { margin-top: 1rem; font-size: 1.8rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent-gold); }
 
-/* Header */
+
 .header { position: fixed; top: 0; left: 0; right: 0; z-index: 9000; display: flex; align-items: center; justify-content: center; height: 76px; background: transparent; transition: background-color 0.4s; }
 .header.is-scrolled { background-color: rgba(11, 12, 14, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212, 175, 55, 0.15); }
 .header__logo { opacity: 0; transition: opacity 0.8s var(--ease-out-expo); }
 .header__logo.is-visible { opacity: 1; }
 
-/* Sabit Video */
+
 .fullscreen-video { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: 1; opacity: 0; transition: opacity 1s var(--ease-out-expo); pointer-events: none; }
 .fullscreen-video.is-loaded { opacity: 1; }
+.fullscreen-video { background: #0b0c0e url('VIDEO/attalia_poster.jpg') center / cover no-repeat; }
 
-/* Hero */
-/* Hero Bölümü - Modern, Keskin ve Net Lüks Stil */
+
+
 .hero { position: relative; height: 100vh; width: 100%; z-index: 2; }
 .hero__content { position: absolute; inset: 0; pointer-events: none; }
 .hero-block { position: absolute; left: 50%; transform: translateX(-50%); width: 100%; max-width: 1000px; text-align: center; padding: 0 1.5rem; }
@@ -49,10 +50,10 @@ body { font-family: var(--font-sans); background-color: var(--bg-primary); color
 .hero-block--statement { top: 42%; transform: translate(-50%, -50%); }
 
 .hero__sublabel { 
-  font-family: var(--font-sans); /* Modern ve temiz font */
+  font-family: var(--font-sans);
   font-size: 1rem; 
   font-weight: 600; 
-  letter-spacing: 0.4em; /* Geniş lüks harf aralığı */
+  letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--accent-gold); 
   opacity: 0; 
@@ -76,8 +77,8 @@ body { font-family: var(--font-sans); background-color: var(--bg-primary); color
 }
 
 .hero__statement { 
-  font-family: var(--font-serif); /* Montega fontu için serif kullandık */
-  font-weight: 150; /* Kalınlığı kaldırdık, ince ve zarif hale getirdik */
+  font-family: var(--font-serif);
+  font-weight: 150;
   font-size: clamp(3.2rem, 5.5vw, 5rem); 
   line-height: 1.15;
   letter-spacing: -0.01em;
@@ -87,19 +88,19 @@ body { font-family: var(--font-sans); background-color: var(--bg-primary); color
 }
 
 .hero__statement span { 
-  font-weight: 150; /* Vurgulanan kelimenin de kalın olmasını engelledik */
-  font-style: italic; /* İstersen zarif bir italiklik katabilirsin */
+  font-weight: 150;
+  font-style: italic;
   background: var(--accent-gold-gradient); 
   -webkit-background-clip: text; 
   -webkit-text-fill-color: transparent; 
 }
 .hero.is-revealed .hero__sublabel, .hero.is-revealed .hero__tagline, .hero.is-revealed .hero__statement { opacity: 1; }
-/* Scroll Göstergesi (Orta Altta) */
+
 .scroll-indicator { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; z-index: 3; pointer-events: none; }
 .scroll-indicator__label { font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-tertiary); }
 .scroll-indicator__line { width: 1px; height: 45px; background: linear-gradient(to bottom, var(--accent-gold), transparent); }
 
-/* Scroll-Scrub Alanı & Tam Ortalanmış Dinamik Yazılar */
+
 .scroll-spacer { position: relative; height: 500vh; width: 100%; z-index: 2; }
 .scroll-sticky-content { position: sticky; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; pointer-events: none; display: flex; align-items: center; justify-content: center; }
 
@@ -109,7 +110,7 @@ body { font-family: var(--font-sans); background-color: var(--bg-primary); color
 .dna-line { font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 3.2rem); color: var(--text-primary); text-transform: uppercase; text-align: center; width: 100%; }
 .dna-line.gold { color: var(--accent-gold); }
 
-/* 2. Build-Launch-Scale Yazıları (Lüks Cam Efekti - Açık ve Şık) */
+
 .steps-wrapper {
   display: flex;
   align-items: center;
@@ -118,13 +119,13 @@ body { font-family: var(--font-sans); background-color: var(--bg-primary); color
   flex-wrap: wrap;
   width: 100%;
   animation: overlayFadeIn 0.5s var(--ease-out-expo) forwards;
-  background: rgba(20, 22, 28, 0.45); /* Daha hafif ve transparan koyuluk */
+  background: rgba(20, 22, 28, 0.45);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.35); /* Altın çizgi biraz daha belirgin ve şık */
+  border: 1px solid rgba(212, 175, 55, 0.35);
   padding: 1.5rem 3rem;
   border-radius: 10px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1); /* İçten hafif parlama efekti */
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 .step-word { font-size: clamp(1.2rem, 3vw, 2.5rem); font-weight: 600; letter-spacing: 0.15em; color: rgba(255,255,255,0.2); transition: color 0.4s; }
 .step-word.is-active { color: var(--text-primary); }
@@ -134,7 +135,7 @@ body { font-family: var(--font-sans); background-color: var(--bg-primary); color
 
 @keyframes overlayFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Diğer Bölümler */
+
 .division, .pillars { position: relative; min-height: 100vh; padding: 6rem 2rem; background: transparent; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
 .division__headline { font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); color: #FFF; margin-bottom: 1.5rem; }
 .division__divider { display: block; width: 60px; height: 2px; background: var(--accent-gold); margin: 0 auto 1.5rem auto; }
@@ -158,12 +159,12 @@ body { font-family: var(--font-sans); background-color: var(--bg-primary); color
 @media (max-width: 600px) {
   .pillars__grid { grid-template-columns: 1fr; }
 }
-/* Video Bitince Ekranı Kaplayan Maskeleme Perdesi */
+
 .screen-mask {
   position: fixed;
   inset: 0;
-  /* Arkadaki siyahliği bastırmak için rengi ve şeffaflığı buradan tam olarak ayarlayabilirsin */
-  background-color: rgba(11, 12, 14, 0.783); /* Eğer arkası biraz görünsün istiyorsan son değeri 0.8 veya 0.7 yap */
+
+  background-color: rgba(11, 12, 14, 0.783);
   z-index: 2;
   opacity: 0;
   pointer-events: none;
@@ -173,4 +174,8 @@ body { font-family: var(--font-sans); background-color: var(--bg-primary); color
 .screen-mask.is-active {
   opacity: 1;
   pointer-events: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .fullscreen-video { opacity: 1; }
 }
