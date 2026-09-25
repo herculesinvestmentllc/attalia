@@ -158,6 +158,11 @@ body { font-family: var(--font-sans); background-color: var(--bg-primary); color
 }
 @media (max-width: 600px) {
   .pillars__grid { grid-template-columns: 1fr; }
+  .hero-block--sublabel { top: 84px; }
+  .hero-block--tagline { top: 128px; }
+  .hero__sublabel { font-size: 0.62rem; letter-spacing: 0.22em; gap: 10px; }
+  .hero__sublabel::before, .hero__sublabel::after { width: 20px; }
+  .hero__tagline { font-size: 0.8rem; letter-spacing: 0.3em; }
 }
 
 .screen-mask {
