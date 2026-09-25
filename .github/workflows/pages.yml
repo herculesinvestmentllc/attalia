@@ -21,8 +21,13 @@ jobs:
       - uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Stage public files
+        run: |
+          mkdir _site
+          cp index.html styles.css script.js robots.txt sitemap.xml .nojekyll _site/
+          cp -r LOGO VIDEO _site/
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
